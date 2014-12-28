@@ -26,7 +26,7 @@ namespace StormFrequencyCalculator
 {
     class clsStormCalc
     {
-
+ 
         //StreamWriter sw;
         clsDepthChart cDepthChart;
         IStepProgressor _pStepProgressor;
