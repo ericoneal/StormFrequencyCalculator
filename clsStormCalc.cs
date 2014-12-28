@@ -87,12 +87,12 @@ namespace StormFrequencyCalculator
 
                 //Get the point feature layer
             IFeatureLayer pPointLayer = FindLayer(strPointLayerName);
-            _connection = new OracleConnection("user id=msdgis;data source=dbprod;password=lojicprod");
+            _connection = new OracleConnection("");
 
                 //Rain Gages are in a different database
             if (_strPointType == "GUAGE")
             {
-                _connection = new OracleConnection("user id=msdgis;data source=rain;password=gisrain");
+                _connection = new OracleConnection("");
                 if (!ConfirmRGNUMField(pPointLayer))
                 {
                     MessageBox.Show("RGNUM Field not present");
@@ -476,7 +476,7 @@ namespace StormFrequencyCalculator
                                         AND (TIMESTAMP <= TO_DATE('" + dtStart + @"',  'MM/DD/YYYY hh:MI:SS AM'))";
                                 if (_connection == null)
                                 {
-                                    _connection = new OracleConnection("user id=msdgis;data source=dbprod;password=lojicprod");
+                                    _connection = new OracleConnection("");
                                     _connection.Open();
                                 }
                         break;
@@ -488,7 +488,7 @@ namespace StormFrequencyCalculator
                                         AND (TIMESTAMP <= TO_DATE('" + dtStart + @"',  'MM/DD/YYYY hh:MI:SS AM'))";
                                 if (_connection == null)
                                 {
-                                    _connection = new OracleConnection("user id=msdgis;data source=dbprod;password=lojicprod");
+                                    _connection = new OracleConnection("");
                                     _connection.Open();
                                 }
                         break;
@@ -500,7 +500,7 @@ namespace StormFrequencyCalculator
                                AND (TO_DATE(EVENT_DATE || '  ' || EVENT_TIME, 'MM/DD/YYYY HH24:MI') <= TO_DATE('" + dtStart + @"', 'MM/DD/YYYY hh:MI:SS AM'))";
                             if (_connection == null)
                             {
-                                _connection = new OracleConnection("user id=msdgis;data source=rain;password=gisrain");
+                                _connection = new OracleConnection("");
                                 _connection.Open();
                             }
                         break;
@@ -577,7 +577,7 @@ namespace StormFrequencyCalculator
                         strQuery = @"SELECT SUM(RAIN) as RAIN FROM NEXRAIN.PIXEL where timestamp >= to_date('" + strStartDate + @"', 'MM/DD/YYYY HH24:MI') and timestamp <= to_date('" + strEndDate + @"', 'MM/DD/YYYY HH24:MI') and (PIXEL = " + strPixel + @") GROUP BY PIXEL"; 
                         if (_connection == null)
                         {
-                            _connection = new OracleConnection("user id=msdgis;data source=dbprod;password=lojicprod");
+                            _connection = new OracleConnection("");
                             _connection.Open();
                         }
                         break;
@@ -586,7 +586,7 @@ namespace StormFrequencyCalculator
                         strQuery = @"SELECT SUM(RAIN) as RAIN FROM ONERAIN_EOM.PIXEL where timestamp >= to_date('" + strStartDate + @"', 'MM/DD/YYYY HH24:MI') and timestamp <= to_date('" + strEndDate + @"', 'MM/DD/YYYY HH24:MI') and (PIXEL = " + strPixel + @") GROUP BY PIXEL";
                         if (_connection == null)
                         {
-                            _connection = new OracleConnection("user id=msdgis;data source=dbprod;password=lojicprod");
+                            _connection = new OracleConnection("");
                             _connection.Open();
                         }
                         break;
@@ -598,7 +598,7 @@ namespace StormFrequencyCalculator
                                AND (TO_DATE(EVENT_DATE || '  ' || EVENT_TIME, 'MM/DD/YYYY HH24:MI') <= TO_DATE('" + strEndDate + @"', 'MM/DD/YYYY HH24:MI'))";
                             if (_connection == null)
                             {
-                                _connection = new OracleConnection("user id=msdgis;data source=rain;password=gisrain");
+                                _connection = new OracleConnection("");
                                 _connection.Open();
                             }
                         break;
@@ -1705,7 +1705,7 @@ FROM            (SELECT        STEP2.EVENT_DATETIME, STEP6.MAXOFSUMOFRAIN
         {
 
             IWorkspaceFactory2 pWorkFact = new SdeWorkspaceFactoryClass();
-            IFeatureWorkspace pFWorkspace = pWorkFact.OpenFromString("server=lojicora1;instance=sde:oracle11g;user=msdquery;password=secret1pw@lojicora1;version=SDE.DEFAULT", 0) as IFeatureWorkspace;
+            IFeatureWorkspace pFWorkspace = pWorkFact.OpenFromString(", 0) as IFeatureWorkspace;
             IFeatureClass pFClass = pFWorkspace.OpenFeatureClass(FClassName);
             IFeatureLayer pFLayer = new FeatureLayerClass();
             pFLayer.FeatureClass = pFClass;
