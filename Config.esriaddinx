@@ -1,0 +1,41 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>StormFrequencyCalculator</Name>
+  <AddInID>{e92d0c6e-5b93-402d-a663-c60087bbd827}</AddInID>
+  <Description>Type in a description for this Add-in.</Description>
+  <Version>1.0</Version>
+  <Image>Images\StormFrequencyCalculator.png</Image>
+  <Author>Eric A. O'Neal</Author>
+  <Company>MSD</Company>
+  <Date>4/3/2012</Date>
+  <Targets>
+    <Target name="Desktop" version="10.0" />
+  </Targets>
+  <AddIn language="CLR" library="StormFrequencyCalculator.dll" namespace="StormFrequencyCalculator">
+    <ArcMap>
+
+      <Commands>
+
+        <Button id="MSD_StormFrequencyCalculator_btnStormFrequency"  onDemand="true" class="btnStormFrequency" message="Storm Frequency Calculator" caption="Storm Frequency Calculator" tip="Storm Frequency Calculator" category="Add-In Controls" image="Images\storm.png" />
+     
+      </Commands>
+      
+      <Extensions>
+        <Extension id="MSD_StormFrequencyCalculator_StormFrequencyCalculator" class="StormFrequencyCalculator" productName="Storm Frequency Calculator" showInExtensionDialog="true">
+          <Description>Storm Frequency Calculator</Description>
+        </Extension>
+      </Extensions>
+
+      <Toolbars>
+        <Toolbar id="MStormFrequencyCalculator_Toolbar" caption="MSD Storm Frequency Calculator">
+          <Items>
+            <Button refID="MSD_StormFrequencyCalculator_btnStormFrequency"/>
+
+          </Items>
+        </Toolbar>
+      </Toolbars>
+
+      
+      
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
